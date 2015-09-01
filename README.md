@@ -1,4 +1,4 @@
 node-web-scraper
 ================
 
-Simple web scraper to get a movie name, release year and community rating from IMDB.
+A Node scraper for picking up course information on UCI Webreg.
