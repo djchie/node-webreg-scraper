@@ -39,7 +39,7 @@ app.get('/scrape', function(req, res){
 	});
 	
 	var json = {};
-	for (var i = 0; < queries.length; i++) {
+	for (var i = 0; i < queries.length; i++) {
 		// Do POST calls
 		// Add to overall JSON 
 	}
@@ -61,7 +61,7 @@ app.get('/scrape', function(req, res){
 				courseName : '',
 				sessions : ''
 			};
-			for (var i = 0; i < courseTitleStart; i++) {
+			for (var i = 0; i < 1; i++) {
 				var courseNumber = courseTitleStart[i].children[0].data.trim();
 				var courseName = courseTitleStart[i].children[1].children[0].children[0].data.trim();
 				courseJSON['courseNumber'] = courseNumber;
@@ -73,7 +73,13 @@ app.get('/scrape', function(req, res){
 
 				// Finalize the JSON
 				courseJSON['sessions'] = sessionJSON;
+				// Below is just for testing
+				json = courseJSON;
 			}
+
+			fs.writeFile('output.json', JSON.stringify(json, null, 4), function(err){
+		  	console.log('File successfully written! - Check your project directory for the output.json file');
+		  });
 		} else {
 			console.log("There was an error!");
 			console.log(error);
@@ -104,13 +110,8 @@ app.get('/scrape', function(req, res){
 	//         })
 	// 	}
 
-	// 	fs.writeFile('output.json', JSON.stringify(json, null, 4), function(err){
- //        	console.log('File successfully written! - Check your project directory for the output.json file');
- //        })
-
- //        res.send('Check your console!')
-	// })
-})
+  res.send('Check your console!');
+});
 
 app.listen('8081');
 console.log('Magic happens on port 8081');
